@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package com.cnf;
+
+option java_multiple_files = true;
+option java_package = "com.cnf";
+option java_outer_classname = "AuthorizationServiceProto";
+
+service AuthorizationService {
+  rpc IsValidMunicipalityAuthPeriod (IsValidMunicipalityAuthPeriodRequest) returns (IsValidMunicipalityAuthPeriodReply) {
+  }
+  rpc IsValidUser (IsValidUserRequest) returns (IsValidUserReply){
+  }
+}
+
+message IsValidMunicipalityAuthPeriodRequest {
+  int32 municipality_auth_period_id = 1;
+  int32 user_id = 2;
+  int32 municipality_code = 3;
+}
+
+message IsValidMunicipalityAuthPeriodReply {
+  bool is_valid_auth_period = 1;
+}
+
+message IsValidUserRequest {
+  string user_token = 1;
+}
+
+message IsValidUserReply {
+  int32 user_id = 1;
+}
